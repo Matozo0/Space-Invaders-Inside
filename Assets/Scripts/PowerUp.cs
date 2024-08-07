@@ -6,6 +6,7 @@ public class PowerUp : MonoBehaviour
 {
     public PowerUpData powerUpData;
     public SpriteRenderer spriteRenderer;
+    public GerenciadorPowerUps gerenciadorPowerUps;
 
     void Start()
     {
@@ -19,5 +20,10 @@ public class PowerUp : MonoBehaviour
         {
             collision.GetComponent<PlayerControle>().ColetarPowerUp(this);
         }
+    }
+
+    private void OnDestroy()
+    {
+        gerenciadorPowerUps.PowerUpDestruido();
     }
 }

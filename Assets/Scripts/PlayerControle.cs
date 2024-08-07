@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Video;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Assertions.Must;
 
 public class PlayerControle : MonoBehaviour
 {
@@ -21,7 +22,10 @@ public class PlayerControle : MonoBehaviour
     public GameObject Tiro;
     public Animator animator;
     private string estadoAtual;
-    
+
+    private int pontuacao;
+    public TMP_Text pontuacao_texto;
+
     GerenciadorAudio gerenciadorAudio;
 
     public Image[] powerUpSlots;
@@ -90,14 +94,34 @@ public class PlayerControle : MonoBehaviour
         }
     }
 
+    public void AumentarPontos(int pontos)
+    {
+        pontuacao += pontos;
+        pontuacao_texto.text = "Pontos: " + pontuacao.ToString();
+    }
+
     void UsarPowerUp(int slot)
     {
         if (powerUps[slot] != null)
         {
-            Instantiate(powerUps[slot].efeitoPrefab, transform.position, Quaternion.identity);
+            if (powerUps[slot].nome == "Multi_tiro")
+            {
+                intervaloTiro = 0.1f;
+                StartCoroutine(Cooldown_Multi_tiro());
+            }
+            else
+            {
+                Instantiate(powerUps[slot].efeitoPrefab, transform.position, Quaternion.identity);
+            }
+            
             powerUps[slot] = null;
             powerUpSlots[slot].sprite = null;
             nomes[slot].text = "";
         }
+    }
+
+    IEnumerator Cooldown_Multi_tiro()
+    {
+        yield return new WaitForSeconds(10);
     }
 }

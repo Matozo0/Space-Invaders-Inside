@@ -7,5 +7,4 @@ public class TiroData : ScriptableObject
     public int dano;
     public float duracao;
     public Sprite sprite;
-    public Color cor;
 }

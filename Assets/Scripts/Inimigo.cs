@@ -19,6 +19,8 @@ public class Inimigo : MonoBehaviour
     private float proximoTiro;
     private float proximoTeleporte;
 
+    public GameObject ponto;
+
     GerenciadorAudio gerenciadorAudio;
 
     void OnValidate()
@@ -115,6 +117,10 @@ public class Inimigo : MonoBehaviour
             main = efeitoMorte.GetComponent<ParticleSystem>().main;
             main.startColor = inimigoData.corMorte;
             Instantiate(efeitoMorte, transform.position, Quaternion.identity);
+            if (Random.Range(0.0f,1.0f) >= 0.1f)
+            {
+                Instantiate(ponto, transform.position, Quaternion.identity);
+            }
         }
     }
 }
