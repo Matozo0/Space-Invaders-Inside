@@ -4,6 +4,8 @@ using UnityEngine;
 public class PowerUpData : ScriptableObject
 {
     public string nome;
-    public float duracao;
+    public Sprite sprite_coletavel;
     public Sprite sprite;
+    public GameObject efeitoPrefab;
+    public Color cor;
 }
