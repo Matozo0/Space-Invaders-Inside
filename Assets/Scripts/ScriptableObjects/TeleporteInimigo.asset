@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TeleporteInimigo
   m_EditorClassIdentifier: Assembly-CSharp::TeleporteInimigoData
   vida: 5
-  velocidade: 0.5
+  velocidade: 0.3
   sprite: {fileID: -627420527, guid: c546f14b1787b694f930c72210e49e37, type: 3}
   corMorte: {r: 0.4156863, g: 0.10588236, b: 0.6039216, a: 1}
   teleporteIntervalo: 4

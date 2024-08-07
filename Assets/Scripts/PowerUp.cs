@@ -12,6 +12,7 @@ public class PowerUp : MonoBehaviour
     {
         spriteRenderer.sprite = powerUpData.sprite_coletavel;
         spriteRenderer.color = powerUpData.cor;
+        gerenciadorPowerUps = GameObject.FindGameObjectWithTag("Geren_PowerUps").GetComponent<GerenciadorPowerUps>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)

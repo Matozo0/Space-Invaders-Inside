@@ -8,8 +8,11 @@ public class GerenciadorMenu : MonoBehaviour
     public GameObject MenuInicial;
     public GameObject MenuPausa;
     public GameObject BotaoPausa;
+    public GameObject GameOver;
     public GameObject Pontuacao;
+    public GameObject Ondas;
     public GerenciadorFases gerenciadorFases;
+    public GerenciadorPowerUps gerenciadorPowerUps;
 
     void Start()
     {
@@ -17,6 +20,7 @@ public class GerenciadorMenu : MonoBehaviour
         MenuInicial.SetActive(true);
         BotaoPausa.SetActive(false);
         Pontuacao.SetActive(false);
+        Ondas.SetActive(false);
     }
 
     public void Comecar()
@@ -24,7 +28,9 @@ public class GerenciadorMenu : MonoBehaviour
         MenuInicial.SetActive(false);
         BotaoPausa.SetActive(true);
         Pontuacao.SetActive(true);
+        Ondas.SetActive(true);
         gerenciadorFases.IniciarFases();
+        gerenciadorPowerUps.IniciarPowerUps();
     }
 
     public void Pausar()
@@ -48,5 +54,14 @@ public class GerenciadorMenu : MonoBehaviour
     public void Sair()
     {
         Application.Quit();
+    }
+    
+    public void FimdeJogo()
+    {
+        Time.timeScale = 0.0f;
+        Pontuacao.SetActive(false);
+        Ondas.SetActive(false);
+        BotaoPausa.SetActive(false);
+        GameOver.SetActive(true);
     }
 }

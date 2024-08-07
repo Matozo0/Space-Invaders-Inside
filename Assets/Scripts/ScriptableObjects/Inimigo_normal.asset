@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Inimigo_normal
   m_EditorClassIdentifier: 
   vida: 3
-  velocidade: 0.75
+  velocidade: 0.25
   sprite: {fileID: -1630584880, guid: 30b89b494655747429bc95fe97cfdb32, type: 3}
   corMorte: {r: 0.44705886, g: 0.8352942, b: 0.44705886, a: 1}

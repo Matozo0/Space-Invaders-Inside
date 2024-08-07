@@ -14,7 +14,7 @@ public class GerenciadorPowerUps : MonoBehaviour
     public int maxPowerUps = 5;
 
     private int PowerUpsAtivos = 0;
-    void Start()
+    public void IniciarPowerUps()
     {
         StartCoroutine(SpawnarPowerUps());
     }

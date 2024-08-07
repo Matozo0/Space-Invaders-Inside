@@ -8,6 +8,7 @@ public class GerenciadorAudio : MonoBehaviour
     public AudioClip tiro;
     public AudioClip dano;
     public AudioClip teleporte;
+    public AudioClip coleta_ponto;
 
     public void TocarEfeito(AudioClip efeito)
     {

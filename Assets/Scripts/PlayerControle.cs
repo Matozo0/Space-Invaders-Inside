@@ -26,7 +26,8 @@ public class PlayerControle : MonoBehaviour
     private int pontuacao;
     public TMP_Text pontuacao_texto;
 
-    GerenciadorAudio gerenciadorAudio;
+    public GerenciadorAudio gerenciadorAudio;
+    public GerenciadorMenu gerenciadorMenu;
 
     public Image[] powerUpSlots;
     public TMP_Text[] nomes;
@@ -35,7 +36,6 @@ public class PlayerControle : MonoBehaviour
     void Start()
     {
         meuRb = GetComponent<Rigidbody2D>();
-        gerenciadorAudio = GameObject.FindGameObjectWithTag("Audio").GetComponent<GerenciadorAudio>();
     }
 
     void Update()
@@ -76,6 +76,7 @@ public class PlayerControle : MonoBehaviour
         if (vidaAtual <= 0)
         {
             Destroy(gameObject);
+            gerenciadorMenu.FimdeJogo();
         }
     }
 
@@ -88,6 +89,7 @@ public class PlayerControle : MonoBehaviour
                 powerUps[i] = powerUp.powerUpData;
                 powerUpSlots[i].sprite = powerUp.powerUpData.sprite;
                 nomes[i].text = powerUp.powerUpData.nome;
+
                 Destroy(powerUp.gameObject);
                 break;
             }
@@ -98,6 +100,7 @@ public class PlayerControle : MonoBehaviour
     {
         pontuacao += pontos;
         pontuacao_texto.text = "Pontos: " + pontuacao.ToString();
+        gerenciadorAudio.TocarEfeito(gerenciadorAudio.coleta_ponto);
     }
 
     void UsarPowerUp(int slot)
